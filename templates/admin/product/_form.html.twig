@@ -1,0 +1,102 @@
+<form class="form-horizontal" method="post" class="col-sm-5" >
+    <div class="panel-body" >
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Kategorisi</label>
+            <div class="col-sm-3">
+                <select name="categoryid" class="form-control">
+
+                    {% for cat in catlist %}
+                        <option value="{{ cat.id }}">{{ cat.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Başlık</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="product[title]" value="{{ product.title }}" class="form-control"
+                       placeholder="Başlık">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Anahtar kelimeler</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="product[keywords]" value="{{ product.keywords }}" class="form-control"
+                       placeholder="Anahtar kelimeler">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Kısa Açıklama</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="product[description]" value="{{ product.description }}" class="form-control"
+                       placeholder="Anahtar kelimeler">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Alış Fiyatı</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="product[pprice]" value="{{ product.pprice }}" class="form-control"
+                       placeholder="Anahtar kelimeler">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Satış Fiyatı</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="product[sprice]" value="{{ product.sprice }}" class="form-control"
+                       placeholder="Anahtar kelimeler">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Miktarı</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="product[amount]" value="{{ product.amount }}" class="form-control"
+                       placeholder="Anahtar kelimeler">
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Detay</label>
+
+        <div class="col-sm-5">
+            <textarea id="editor" name="product[detail]" rows="10" cols="100">{{ product.detail }}</textarea>
+
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Aktif Durumu:</label>
+
+        <div class="col-sm-3">
+            <select class="form-control" name="product[status]">
+                <option>{{ product.status }}</option>
+                <option>true</option>
+                <option selected>false</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="btn  btn-md pull-right">
+                <button type="submit" class="btn btn-md btn-primary">KAYDET</button>
+            </div>
+            <!-- /.box-footer -->
+
+
+        </div>
+    </div>
+
+</form>

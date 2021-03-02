@@ -1,0 +1,74 @@
+<form class="form-horizontal" method="post">
+    <div class="panel-body">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Üst Kategori</label>
+            <div class="col-sm-3">
+                <select name="category[parentid]" class="form-control">
+                    {% if category.parentid !=0 %}
+                        <option value="{{ category.parentid }}">{{ catname.title }}</option>
+                    {% else %}
+                        <option value="0">Ana Kategori</option>
+                    {% endif %}
+                    <option value="0">Ana Kategori</option>
+                    {% for cat in catlist %}
+                        <option value="{{ cat.id }}">{{ cat.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Başlık</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="category[title]" value="{{ category.title }}" class="form-control"
+                       placeholder="Başlık">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Anahtar kelimeler</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="category[keywords]" value="{{ category.keywords }}" class="form-control"
+                       placeholder="Anahtar kelimeler">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Anahtar kelimeler</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="category[keywords]" value="{{ category.keywords }}" class="form-control"
+                       placeholder="Anahtar kelimeler">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Açıklamalar</label>
+
+            <div class="col-sm-5">
+                <input type="text" name="category[description]" value="{{ category.description }}" class="form-control"
+                       placeholder="Anahtar kelimeler">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Aktif Durumu:</label>
+
+            <div class="col-sm-3">
+                <select class="form-control" name="category[status]">
+                    <option>{{ category.status }}</option>
+                    <option>true</option>
+                    <option selected>false</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="btn  btn-md pull-right">
+                <button type="submit" class="btn btn-md btn-primary">KAYDET</button>
+            </div>
+            <!-- /.box-footer -->
+        </div>
+    </div>
+    <!-- /.box-body -->
+
+</form>

@@ -1,0 +1,13 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Yeni Ürün{% endblock %}
+
+{% block content %}
+<div class="col-md-6 offset-md-6" style="margin-left: 250px">
+    <h1>Yeni Ürün Ekle</h1>
+
+    {{ include('admin/product/_form.html.twig') }}
+
+    <a href="{{ path('admin_product_index') }}">Listeye geri dön</a>
+</div>
+{% endblock %}

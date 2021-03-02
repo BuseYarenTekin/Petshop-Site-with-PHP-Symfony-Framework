@@ -1,0 +1,38 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}  {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block sidebar  %} {{ include ('home/_sidebar.html.twig') }} {% endblock %}
+{% block content %}
+
+    <div class="category-tab"><!--category-tab-->
+        <h3>{{ data[0].title }}</h3>
+        <div class="tab-content">
+            <ul class="thumbnail">
+
+
+                {% for rs in products %}
+
+                    <li class="">
+                        <div class="col-sm-3">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <a href="{{ path('product_detail', {'id': rs.id }) }}"><img src="{{ asset ('uploads') }}/images/{{ rs.image }}" alt=""></a>
+                                        <h2>{{ rs.title }}</h2>
+                                        <p>{{ rs.sprice }} TL</p>
+                                        <button type="submit" class="btn btn-default add-to-cart">
+                                            <span class="icon-shopping-cart"></span> Sepete Ekle</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

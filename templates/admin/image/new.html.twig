@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Image{% endblock %}
+
+{% block body %}
+    <h1>Create new Image</h1>
+
+    {{ include('admin/image/_form.html.twig') }}
+    {% for image in imagelist %}
+        <img src="{{ asset('uploads') }}/images/{{ image.image }}">
+        <a href="{{ path('admin_image_del',{'id':image.id,'pid':image.productid}) }}"
+           onclick="return confirm('Silmek istediğine emin misin?');">Sil</a>
+    {% endfor %}
+{% endblock %}

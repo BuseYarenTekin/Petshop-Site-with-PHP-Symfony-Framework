@@ -1,0 +1,64 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Detay 📃 {% endblock %}
+
+{% block content %}
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">
+                    <em class="fa fa-home"></em>
+                </a></li>
+            <li class="active">Panel</li>
+        </ol>
+    </div><!--/.row-->
+    <section class="content">
+        <div class="box">
+            <div class="panel panel-default">
+                <h4 class="panel-heading">Kategori Detay
+                    <small class="panel-container"><a href="{{ path('admin_category_new') }}"
+                                                      class="btn btn-lg fa fa-plus pull-right btn-info"> Yeni Kategori Ekle</a></small>
+                </h4>
+                <!-- /.box-header -->
+                <div class="panel-body">
+                    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Parentid</th>
+                <td>{{ category.parentid }}</td>
+            </tr>
+            <tr>
+                <th>Başlık</th>
+                <td>{{ category.title }}</td>
+            </tr>
+            <tr>
+                <th>Anahtar kelime</th>
+                <td>{{ category.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Açıklama</th>
+                <td>{{ category.description }}</td>
+            </tr>
+            <tr>
+                <th>Durum</th>
+                <td>{{ category.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_category_index') }}" class="btn btn-lg fa pull-right btn-default"><i class="fa fa-backward" style="margin-right: 5px; color: #333"></i>Geri Dön</a>
+
+    <a href="{{ path('admin_category_edit', {'id': category.id,'pid': category.parentid}) }}"class="btn btn-lg fa pull-right btn-default"><i class="fa fa-pencil" style="margin-right: 5px; color: #333"></i> Düzenle</a>
+
+    {{ include('admin/category/_delete_form.html.twig') }}
+                </div></div></div>
+    </section>
+
+
+</div>    <!--/.main-->
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Yeni Siparişler{% endblock %}
+
+{% block content %}
+<div class="col-sm-5" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row" >
+        <ol class="breadcrumb">
+            <li><a href="#">
+                    <em class="fa fa-home"></em>
+                </a></li>
+            <li class="active">Panelim</li>
+        </ol>
+    </div><!--/.row-->
+    <h1>Yeni Sipariş Oluştur</h1>
+
+    {{ include('orders/_form.html.twig') }}
+
+    <a href="{{ path('orders_index') }}">Listeye geri dön</a></div>
+{% endblock %}

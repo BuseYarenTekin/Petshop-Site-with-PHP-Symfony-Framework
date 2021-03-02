@@ -1,0 +1,51 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}{{ data[0].title }}{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{ include('home/_usersidebar.html.twig') }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <hr class="soften">
+    <div class="row">
+        <div class="span12">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            User Name :{{ app.user.name }}<hr>
+            User Email:{{ app.user.email }}<hr>
+            {% else %}
+                Login gerçekleştirilemedi
+                <form method="post" class="col-sm-5 ">
+                    {% if error %}
+                        <div class="alert alert-danger" >{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <label for="inputEmail" class="col-sm-5">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+                           placeholder="Email" required autofocus>
+                    <label for="inputPassword" class="col-sm-5">Şifre</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
+                           required>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+                    {#
+                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                        See https://symfony.com/doc/current/security/remember_me.html
+
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>
+                    #}
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        Giriş Yap
+                    </button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+

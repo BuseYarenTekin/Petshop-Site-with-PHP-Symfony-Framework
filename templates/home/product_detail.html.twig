@@ -1,0 +1,298 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}{{ data[0].title }}{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+
+{% block description %}{{ data[0].description }}{% endblock %}
+{% block sidebar %}{{ include('home/_sidebar.html.twig') }}{% endblock %}
+{% block content %}
+
+    <div class="col-sm-9 padding-right">
+        <div class="product-details"><!--product-details-->
+            <div class="col-sm-5">
+                <div class="view-product">
+                    <img src="{{ asset("uploads/images/") }}{{ data[0].image }}" alt="">
+                    <h3>YAKINLAŞTIR</h3>
+                </div>
+                <div id="similar-product" class="carousel slide" data-ride="carousel">
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item">
+
+                            {% for img in gallery %}
+
+                                <a href=""><img src="{{ asset('uploads/images/') }}{{ img.image }}" alt="" width="84"
+                                                height="84"></a>
+
+                            {% endfor %}
+                        </div>
+                        <div class="item">
+                            {% for img in gallery %}
+
+                                <a href=""><img src="{{ asset('uploads/images/') }}{{ img.image }}" alt="" width="84"
+                                                height="84"></a>
+
+                            {% endfor %}
+                        </div>
+                        <div class="item active">
+                            {% for img in gallery %}
+
+                                <a href=""><img src="{{ asset('uploads/images/') }}{{ img.image }}" alt="" width="84"
+                                                height="84"></a>
+
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left item-control" href="#similar-product" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="right item-control" href="#similar-product" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-sm-7">
+                <div class="product-information"><!--/product-information-->
+                    <img src="images/product-details/new.jpg" class="newarrival" alt="">
+                    <h2>{{ data[0].title }}</h2>
+                    <img src="{{ asset('/') }}images/product-details/rating.png" alt="">
+                    <form name="shopcart" method="post" class="form-horizontal qtyForm" action="{{ path('shopcart_new') }}">
+                        <span>{{ data[0].pprice }} TL</span><br>
+                        Alacağınız Adet:<input type="number" name="shopcart[quantity]" value="1" max="{{ data[0].amount }}">
+                        <input type="hidden" name="shopcart[productid]" value="{{ data[0].id }}">
+                        <input type="hidden" name="shopcart[userid]" value="{{ app.user.id }}">
+                        <button type="submit" class="btn btn-default cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Sepete Ekle
+                        </button>
+                    </form>
+                    <p><b>Kullanılabilirlik:</b> Stokta</p>
+                    <p><b>DURUM:</b> Yeni</p>
+                    <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""></a>
+                </div><!--/product-information-->
+            </div>
+        </div><!--/product-details-->
+
+        <div class="category-tab shop-details-tab"><!--category-tab-->
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    <li><a href="#details" data-toggle="tab">Details</a></li>
+                    <li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
+                    <li><a href="#tag" data-toggle="tab">Tag</a></li>
+                    <li class="active"><a href="#reviews" data-toggle="tab">Yeniden görülme (5)</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade" id="details">
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery1.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Easy Polo Black Edition</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Sepete ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery2.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Easy Polo Black Edition</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Sepete ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery3.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Easy Polo Black Edition</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Sepete ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery4.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Evcil Hayvan 1</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Sepete ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="companyprofile">
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery1.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Evcil Hayvan 1</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Sepete ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery3.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Easy Polo Black Edition</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Sepete ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery2.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Evcil Hayvan 2</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Sepete ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery4.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Easy Polo Black Edition</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Sepete ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="tag">
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery1.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Easy Polo Black Edition</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Add to cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery2.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Easy Polo Black Edition</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Add to cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery3.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Easy Polo Black Edition</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Add to cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('/') }}images/home/gallery4.jpg" alt="">
+                                    <h2>$56</h2>
+                                    <p>Easy Polo Black Edition</p>
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Add to cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade active in" id="reviews">
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href=""><i class="fa fa-user"></i>TÜRKİYE</a></li>
+                            <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
+                            <li><a href=""><i class="fa fa-calendar-o"></i>15 OCA 2019</a></li>
+                        </ul>
+                        <p>{{ data[0].description }}</p>
+                        <p><b>Geri izlenim bırakın :)</b></p>
+
+                        <form action="">
+										<span>
+											<input type="text" placeholder="İsminiz">
+											<input type="email" placeholder="Email adresiniz">
+										</span>
+                            <textarea name=""></textarea>
+                            <b>Oran </b> <img src="{{ asset('/') }}images/product-details/rating.png" alt="">
+                            <button type="submit" class="btn btn-default pull-right">
+                                Kayıt Ol
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div><!--/category-tab-->
+
+
+    </div>
+
+{% endblock %}

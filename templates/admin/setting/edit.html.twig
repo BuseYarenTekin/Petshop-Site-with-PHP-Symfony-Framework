@@ -1,0 +1,23 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit Setting{% endblock %}
+
+{% block content %}
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">
+                    <em class="fa fa-home"></em>
+                </a></li>
+            <li class="active">Panel</li>
+        </ol>
+    </div><!--/.row-->
+    <h1>Ayarları Düzenle</h1>
+
+    {{ include('admin/setting/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_setting_index') }}">back to list</a>
+
+    {{ include('admin/setting/_delete_form.html.twig') }}
+{% endblock %}

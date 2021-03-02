@@ -1,0 +1,57 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}  Alışveriş Sepeti {% endblock %}
+{% block content %}
+
+<ul class="breadcrumb" xmlns="http://www.w3.org/1999/html">
+    <li><a href="{{ path('home') }}">Home</a><span class="divider">/</span> </li>
+    <li><a href="/">Shopcart Items</a><span class="divider">/</span> </li>
+    <li class="active">Preview</li>
+</ul>
+
+<div style="padding:30px;" class="category-tab"><!--category-tab-->
+    <h3>Alışveriş Sepetim </h3>
+    {{ include ('messages.html.twig') }}
+    <div class="tab-content">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ürün İsmi</th>
+                <th>Satış Fiyatı</th>
+                <th>Miktarı</th>
+                <th>Total</th>
+                <th>Hareketler</th>
+            </tr>
+            </thead>
+            {%
+                set total = 0
+            %}
+            {% for shopcart in shopcarts %}
+            <tr>
+                <td>{{ shopcart.id }}</td>
+                <td>{{ shopcart.title }}</td>
+                <td>{{ shopcart.sprice }}</td>
+                <td>{{ shopcart.quantity }}</td>
+                <td>{{  shopcart.quantity * shopcart.sprice }}</td>
+                <td>
+                <td> <a href="{{ path ('shopcart_del',{'id':shopcart.id}) }}">
+                        <button class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')"><i class="icon-remove icon-white"></i> Sil</button></a></td>
+                </td>
+            </tr>
+                {% set total=total+(shopcart.quantity*shopcart.sprice) %}
+            {% else %}
+                <tr>
+                    <td colspan="5">Alışveriş sepeti boştur.</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5"> <b>Toplam Alışveriş Tutarı : {{ total }} TL </b> </td>
+            </tr>
+
+        </table>
+        <a href="{{path ('orders_new') }}" class="btn btn-block btn-success btn-large">Ürünleri satın al</a>
+    </div>
+</div>
+{% endblock %}

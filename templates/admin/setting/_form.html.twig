@@ -1,0 +1,201 @@
+{{ include('admin/user/messages.html.twig') }}
+<form class="form-horizontal" method="post">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body tabs">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab">Genel Bilgiler</a></li>
+                    <li><a href="#tab2" data-toggle="tab">Email Server</a></li>
+                    <li><a href="#tab3" data-toggle="tab">Hakkımızda</a></li>
+                    <li><a href="#tab4" data-toggle="tab">İletişim</a></li>
+                    <li><a href="#tab5" data-toggle="tab">Referanslar</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane  in active" id="tab1">
+                        <h4>Genel Bilgiler</h4>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Başlık</label>
+
+                                <div class="col-sm-5">
+                                    <input type="text" name="setting[title]" value="{{ setting.title }}"
+                                           class="form-control"
+                                           placeholder="Başlık">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Anahtar kelimeler</label>
+
+                                <div class="col-sm-5">
+                                    <input type="text" name="setting[keywords]" value="{{ setting.keywords }}"
+                                           class="form-control"
+                                           placeholder="Anahtar kelimeler">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Kısa Açıklama</label>
+
+                                <div class="col-sm-5">
+                                    <input type="text" name="setting[description]" value="{{ setting.description }}"
+                                           class="form-control"
+                                           placeholder="Anahtar kelimeler">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Firma Adı</label>
+
+                                <div class="col-sm-5">
+                                    <input type="text" name="setting[company]" value="{{ setting.company }}"
+                                           class="form-control"
+                                           placeholder="Anahtar kelimeler">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Adresi</label>
+
+                                <div class="col-sm-5">
+                                    <input type="text" name="setting[address]" value="{{ setting.address }}"
+                                           class="form-control"
+                                           placeholder="Anahtar kelimeler">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Fax</label>
+
+                                <div class="col-sm-5">
+                                    <input type="text" name="setting[fax]" value="{{ setting.fax }}"
+                                           class="form-control"
+                                           placeholder="Anahtar kelimeler">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Aktif Durumu:</label>
+
+                                <div class="col-sm-3">
+                                    <select class="form-control" name="setting[status]">
+                                        <option>{{ setting.status }}</option>
+                                        <option>true</option>
+                                        <option selected>false</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row"></div>
+                    </div>
+                    <div class="tab-pane " id="tab2">
+                        <h4>Email Server</h4>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email Server</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" name="setting[smtpserver]" value="{{ setting.smtpserver }}"
+                                       class="form-control"
+                                       placeholder="Email Server">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" name="setting[smtpemail]" value="{{ setting.smtpemail }}"
+                                       class="form-control"
+                                       placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email şifre</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" name="setting[smtppass]" value="{{ setting.smtppass }}"
+                                       class="form-control"
+                                       placeholder="Email şifre">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">SMTP Port</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" name="setting[smtpport]" value="{{ setting.smtpport }}"
+                                       class="form-control"
+                                       placeholder="SMTP Port">
+                            </div>
+                        </div>
+                        <div class="row">
+                        </div>
+                    </div>
+                    <div class="tab-pane " id="tab3">
+                        <h4>Hakkımızda</h4>
+
+                        <div class="form-group">
+                            <textarea id="aboutus" name="setting[aboutus]"> {{ setting.aboutus }}</textarea>
+
+
+                        </div>
+                    </div>
+                    <div class="tab-pane " id="tab4">
+                        <h4>İletişim</h4>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">İletişim</label>
+
+                            <div class="col-sm-5">
+                                <textarea id="contact" name="setting[contact]"> {{ setting.contact }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab5">
+                        <h4>Referanslar</h4>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Referanslar</label>
+
+                            <div class="col-sm-5">
+                                <textarea id="referances"  name="setting[referances]"> {{ setting.referances }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.panel-->
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="btn  btn-md pull-right">
+                <button type="submit" class="btn btn-md btn-primary">KAYDET</button>
+            </div>
+            <!-- /.box-footer -->
+
+
+        </div>
+    </div>
+    <!-- /.box-body -->
+
+</form>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#contact'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#aboutus'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#referances'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>

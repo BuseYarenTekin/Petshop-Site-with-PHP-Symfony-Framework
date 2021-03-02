@@ -1,0 +1,115 @@
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #FFFFFF; padding: 2px 6px; }
+        ul#menu-v, #menu-v ul
+        {
+            width:200px; /* Main Menu width */
+            list-style:none; margin:0; padding:0;
+            z-index:9;
+            text-align: left;
+        }
+
+        #menu-v li
+        {
+            margin:0;padding:0;
+            position:relative;
+            background-color:#EEEEEE; /*fallback color*/
+            background-color:rgba(255,255,255);
+            transition:background 0.5s;
+        }
+        #menu-v a
+        {
+            font:normal 12px Arial;
+            border-top:1px solid #eee !important;
+            display:block;
+            color:#444444;
+            text-decoration:none;
+            line-height:26px;
+            position:relative;
+        }
+
+        #menu-v li:first-child a
+        {
+            border-top:0 !important;
+        }
+
+        #menu-v a.arrow::after{
+            content:'';
+            position:absolute;
+            display:inline;
+            top:50%;
+            margin-top:-4px;
+            right:8px;
+            border-width:4px;
+            border-style:solid;
+            border-color:transparent transparent transparent black;
+            transition:border-color 0.5s;
+        }
+
+        #menu-v li a.arrow:hover::after
+        {
+            border-color:transparent transparent transparent red;
+        }
+
+        /*Sub level menu items
+        ---------------------------------------*/
+        #menu-v li ul
+        {
+            min-width:180px; /* Sub level menu min width */
+            position:absolute;
+            display:none;
+            left:100%;
+            top:0;
+        }
+
+        #menu-v li:hover > ul
+        {
+            display:block;
+        }
+    </style>
+    <div class="col-sm-3" align="center">
+        <div class="left-sidebar">
+            <h2>KATEGORİLER</h2>
+           {% for cat in cats %}
+            {{ cat | raw }}
+            {% endfor %}<br>
+            <div class="brands_products"><!--brands_products-->
+                <h2>MARKALAR</h2>
+                <div class="brands-name">
+                    <ul class="nav nav-pills nav-stacked navigation-menu">
+                        <li><a href="#"> <span class="pull-right">(50)</span>LUIS</a></li>
+                        <li><a href="#"> <span class="pull-right">(56)</span>OBVIAN</a></li>
+                        <li><a href="#"> <span class="pull-right">(27)</span>FELICIA</a></li>
+                        <li><a href="#"> <span class="pull-right">(32)</span>SANABELLE</a></li>
+                        <li><a href="#"> <span class="pull-right">(5)</span>BOSCH</a></li>
+                        <li><a href="#"> <span class="pull-right">(9)</span>PATI LIFE</a></li>
+                    </ul>
+                </div>
+            </div><!--/brands_products-->
+        </div>
+            <div class="price-range"><!--price-range-->
+                <h2>Fiyat Aralığı</h2>
+                <div class="well text-center">
+                    <div class="slider slider-horizontal" style="width: 174px;">
+                        <div class="slider-track">
+                            <div class="slider-selection" style="left: 41.6667%; width: 33.3333%;"></div>
+                            <div class="slider-handle round left-round" style="left: 41.6667%;"></div>
+                            <div class="slider-handle round" style="left: 75%;"></div>
+                        </div>
+                        <div class="tooltip top" style="top: -30px; left: 68.5px;">
+                            <div class="tooltip-arrow"></div>
+                            <div class="tooltip-inner">25:250</div>
+                        </div>
+                        <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" style="">
+                    </div>
+                    <br>
+                    <b class="pull-left">25</b> <b class="pull-right">250</b>
+                </div>
+            </div><!--/price-range-->
+
+
+        </div>
+    </div>
+{% endblock %}

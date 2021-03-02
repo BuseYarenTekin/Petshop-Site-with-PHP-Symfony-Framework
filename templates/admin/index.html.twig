@@ -1,0 +1,54 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Admin Template{% endblock %}
+
+{% block content %}
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#">
+                        <em class="fa fa-home"></em>
+                    </a></li>
+                <li class="active">Panel</li>
+            </ol>
+        </div><!--/.row-->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+            Admin Paneline Hoşgeldiniz 🏴
+           </div>
+            <div class="panel-body">
+                <form class="form-horizontal" action="" method="post">
+                    <fieldset>
+                        <!-- Name input-->
+                        <div class="form-group">
+                            <label class="col-md-5 " for="name">Başlık 👆🏻  </label>
+
+                        </div>
+
+                        <!-- Email input-->
+                        <div class="form-group">
+                            <label class="col-md-5 " for="email">Yeni ve harika uygulamalar yapmaya hemen başla! 👍🏻  </label>
+
+                        </div>
+
+                        <!-- Message body -->
+                        <div class="form-group">
+                            <label class="col-md-5 " for="message">Footer 👇🏻  </label>
+
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 widget-right">
+                                <button type="submit" class="btn btn-md btn-primary">Haydi Başla👏🏻 </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+
+    </div>    <!--/.main-->
+
+{% endblock %}

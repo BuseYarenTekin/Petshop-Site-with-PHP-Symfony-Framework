@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('admin_product_delete', {'id': product.id}) }}" onsubmit="return confirm('Hey dostum? Silme işini gerçekleştirmek istediğine emin misin');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+    <button class="btn btn-block btn-danger"><i class="fa fa-trash"></i> </button>
+</form>

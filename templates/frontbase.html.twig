@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Hayvanları seviyoruz🌼{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/price-range.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+<body>
+<div id="header"><!--header-->
+    <div class="header_top"><!--header_top-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="contactinfo">
+                        <ul class="nav nav-pills">
+                            <li><a href="#"><i class="fa fa-phone"></i> 0542 407 7835</a></li>
+                            <li><a href="mailto:tekinyrnn35@gmail.com"><i class="fa fa-envelope"></i>
+                                    tekinyrnn35@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="social-icons pull-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                {{ include('messages.html.twig') }}
+            </div>
+        </div>
+    </div><!--/header_top-->
+
+    <div class="header-middle"><!--header-middle-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="logo pull-left">
+                        <a href="/"><img src="images/home/logo.png" alt=""/></a>
+                    </div>
+                </div>
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right" margin-top="100px">
+                            <ul class="nav navbar-nav">
+                                {% if app.user.roles[0] == "ROLE_ADMIN" %}
+                                    <li><a href="{{ path('admin') }}"><i class="fa fa-user"></i>Admin</a></li>
+                                {% else %}
+                                    <li><a href="{{ path('shopcart_index') }}"><i class="fa fa-shopping-cart"></i>
+                                            Sepetim</a></li>
+                                {% endif %}
+                                <li><a href="{{ path('orders_index') }}"><i class="fa fa-user"></i>Siparişlerim</a></li>
+                                <li><a href="{{ path('home_user_show',{'id':app.user.id}) }}"><i class="fa fa-user"></i>Hesabım</a></li>
+                                <li><a href="{{ path('app_logout') }}">Çıkış</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right" margin-top="100px">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/login"><i class="fa fa-user"></i> Giriş Yap</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header-bottom"><!--header-bottom-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="mainmenu pull-left">
+                    <ul class="nav navbar-nav collapse navbar-collapse">
+                        <li><a href="/" class="active">Anasayfa</a></li>
+                        <li class="dropdown"><a href="#">Kategoriler<i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="shop.html">Fırsat Ürünleri</a></li>
+                                <li><a href="cart.html">Kampanyalar</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ path('hakkimizda') }}">Hakkımızda</a>
+                        <li><a href="{{ path('iletisim') }}">İletişim</a>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="search_box pull-right">
+                    <input type="text" placeholder="Arayın.."/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/header-bottom--></header>
+<!--/header-middle-->
+<!--/header-->
+<!--slider-->
+{% block slider %}{% endblock %} {% block sidebar %}{% endblock %}
+<section>
+    <div class="container">
+        <div class="row">
+
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</section>
+<footer id="footer"><!--Footer-->
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="companyinfo">
+                        <h2><span>Can</span>Dostum</h2>
+                        <p>Muhteşem Alışveriş Günleri ve %50'ye varan indirimler bir tık kadar uzağınızda🐣🐧🐸</p>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="video-gallery text-center">
+                            <a href="https://www.youtube.com/watch?v=ILv8vdA5Lco">
+                                <div class="iframe-img">
+                                    <img src="images/home/iframe1.png" alt=""/>
+                                </div>
+                                <div class="overlay-icon">
+                                    <i class="fa fa-play-circle-o"></i>
+                                </div>
+                            </a>
+                            <p>Kedimi nasıl tarıyorum?</p>
+                            <h2>8 Temmuz 2018</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="video-gallery text-center">
+                            <a href="https://www.youtube.com/watch?v=XaFGPji9YNc">
+                                <div class="iframe-img">
+                                    <img src="images/home/iframe4.png" alt=""/>
+                                </div>
+                                <div class="overlay-icon">
+                                    <i class="fa fa-play-circle-o"></i>
+                                </div>
+                            </a>
+                            <p>Kedi bakımı hakkında bilmeniz gerekenler:</p>
+                            <h2>29 Aralık 2018</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="address">
+                        <img src="images/home/map.png" alt=""/>
+                        <p>SANAL MAĞAZA İNŞ DANŞ. SAN. LTD. ŞTI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-widget">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>HİZMETLERİMİZ</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Çevrimiçi Yardım Hizmeti</a></li>
+                            <li><a href="#">Bizimle İletişime Geçin</a></li>
+                            <li><a href="#">Sıklıkla Sorulan Sorular</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>HIZLI ALIŞVERİŞ</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Fırsat Ürünleri</a></li>
+                            <li><a href="#">Yeni Ürünler</a></li>
+                            <li><a href="#">İletişim Formu</a></li>
+                            <li><a href="#">Sepetim</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>GİZLİLİK POLİTİKALARIMIZ</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Kullanım Şartlarımız</a></li>
+                            <li><a href="#">Gizlilik Politikamız</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 col-sm-offset-1">
+                    <div class="single-widget">
+                        <h2>Müşterilerimizin Dikkatine:</h2>
+                        <form action="#" class="searchform">
+                            <input type="text" placeholder="Mail adresinizi giriniz:"/>
+                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i>
+                            </button>
+                            <p>Sitemizden en son güncellemeleri alınız <br/>ve sisteminizi güncelleyiniz🌷 </p>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <p class="pull-left">Copyright © 2018 CanDostum Inc. Tüm hakları saklıdır⚡</p>
+                <p class="pull-right">Bu site <span><a target="_blank"
+                                                       href="https://www.linkedin.com/in/buse-yaren-tekin-5091a5133/">Buse Yaren TEKİN</a></span>
+                    tarafından tasarlanmıştır 🌼</p>
+            </div>
+        </div>
+    </div>
+</footer><!--/Footer-->
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/price-range.js"></script>
+<script src="/js/jquery.prettyPhoto.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/html5shiv.js"></script>
+<script src="/js/respond.min.js"></script>
+
+</body>
+</html>
+20:29 19.01.2019

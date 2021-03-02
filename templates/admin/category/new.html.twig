@@ -1,0 +1,92 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Yeni Kategori{% endblock %}
+
+{% block content %}
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><em class="fa fa-home"> / Kategori Ekleme</em></a></li>
+
+            </ol>
+        </div><!--/.row-->
+        <section class="content">
+            <div class="panel panel-info">
+                <div class="panel panel-info">
+                    <h3 class="panel-heading">Yeni Kategori Ekleme</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal" method="post">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Üst Kategori</label>
+
+                            <div class="col-sm-5">
+                                <select class="form-control" name="category[parentid]">
+
+                                    <option value="0">Ana kategori</option>
+
+                                    {% for cat in catlist %}
+                                        <option value={{ cat.id }}>{{ cat.title }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Başlık</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" name="category[title]" class="form-control" id="inputEmail3"
+                                       placeholder="Lütfen başlık giriniz">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Anahtar Kelimeler</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" name="category[keywords]" class="form-control" id="inputEmail3"
+                                       placeholder="Lütfen anahtar kelime giriniz">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Kısa Açıklama</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" name="category[description]" class="form-control" id="inputEmail3"
+                                       placeholder="Lütfen açıklama giriniz">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Aktif Durumu:</label>
+
+                            <div class="col-sm-3">
+                                <select class="form-control" name="category[status]">
+                                    <option>True</option>
+                                    <option>False</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="btn  btn-md pull-right">
+                                <button type="submit" class="btn btn-md btn-primary">KAYDET</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                </form>
+            </div>
+
+        </section>
+
+
+    </div>    <!--/.main-->
+
+{% endblock %}

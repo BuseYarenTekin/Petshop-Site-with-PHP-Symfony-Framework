@@ -1,0 +1,88 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ürün Listesi{% endblock %}
+
+{% block content %}
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#">
+                        <em class="fa fa-home"></em>
+                    </a></li>
+                <li class="active">Panel</li>
+            </ol>
+        </div><!--/.row-->
+
+        <div class="col-md-6" style="padding-left: 0;"><h1 class="font-weight: 600"> Ürün Listesi</h1></div>
+        <div class="col-md-6 offset-md-6" style="margin-top: 25px; text-align: right"><a
+                    href="{{ path('admin_product_new') }}" class="btn btn-primary">Yeni Ürün Ekle</a></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th style="text-align: center">ID</th>
+                <th>Başlık</th>
+                <th style="text-align: center">Adeti</th>
+                <th style="text-align: center">Pprice</th>
+                    <th style="text-align: center">Sa</th>
+                <th style="text-align: center">Min</th>
+                <th style="text-align: center">Fotoğraf</th>
+                <th style="text-align: center">Galeri</th>
+                <th style="text-align: center">Kategori Id</th>
+                <th style="text-align: center">Durumu</th>
+                <th>Göster</th>
+                <th>Düzenle</th>
+                <th>Sil</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td style="text-align: center">{{ product.id }}</td>
+                    <td>{{ product.title }}</td>
+                    <td style="text-align: center">{{ product.amount }}</td>
+                    <td style="text-align: center">{{ product.pprice }}</td>
+                    <td style="text-align: center">{{ product.sprice }}</td>
+                    <td style="text-align: center">{{ product.min }}</td>
+                    <td style="text-align: center">
+                        <a href="javascript:openWin('{{ path('admin_product_iedit',{'id':product.id}) }}','','toolbar=no,location=no,directions=0,status=no,top=100,left=200,menuBars=no,scrollBars=no,resizable=no,width=600,height=500');">
+                            {% if product.image == null %}
+                                <img src="{{ url('admin') }}/img/image.png" height="32">
+
+                            {% else %}
+                                <img src="{{ asset('uploads') }}/images/{{ product.image }}"
+                                     style="max-height: 100px;max-width: 100px">
+                            {% endif %}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="javascript:openWin('{{ path('admin_image_new',{'pid':product.id}) }}','','toolbar=no,location=no,directions=0,status=no,top=100,left=200,menuBars=no,scrollBars=no,resizable=no,width=600,height=500');">
+                            <img src="{{ url('admin') }}/img/galleri.png" height="32"></a></td>
+                    <td style="text-align: center">{{ product.id }}</td>
+                    <td style="text-align: center">{{ product.status }}</td>
+                    <td>
+                        <a href="{{ path('admin_product_show', {'id': product.id}) }}"
+                           class="btn btn-block btn-md btn-primary btn-success"><i class="fa fa-eye"></i> </a></td>
+                    <td><a href="{{ path('admin_product_edit',{'id':product.id}) }}"
+                           class="btn btn-block btn-primary"><i
+                                    class="fa fa-edit"></i> </a></td>
+                    <td>{{ include('admin/product/_delete_form.html.twig') }} </td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="18">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

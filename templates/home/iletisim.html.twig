@@ -1,0 +1,49 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}İletişim{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+{% block content %}
+
+
+    <hr class="soften">
+    <div>
+        <h1>İletişim 📝 </h1>
+    </div>
+    <hr class="soften">
+    <div class="row">
+        <div class="span12">
+            <div class="col-md-6">
+                <form role="form" name="messages" action="" method="post">
+                    <div class="form-group">
+                        <h3>Bize Ulaşın</h3>
+                        {{ include('messages.html.twig') }}
+                    </div>
+                    <div class="form-group">
+                        <label>Ad soyad</label>
+                        <input type="text" name="messages[name]" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" name="messages[email]" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Konu</label>
+                        <input type="text" name="messages[subject]" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Mesaj</label>
+                        <textarea class="form-control" name="messages[message]" rows="3"></textarea>
+
+                        {{ data[0].contact | raw }}
+                        <input type="hidden" name="token" value="{{ csrf_token('form-message') }}" />
+                        <button type="submit" class="btn btn-info">Mail Gönder</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

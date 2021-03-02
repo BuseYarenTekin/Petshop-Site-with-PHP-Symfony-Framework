@@ -1,0 +1,49 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block content %}
+    <h1>Ürün</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Title</th>
+                <td>{{ product.title }}</td>
+            </tr>
+
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+
+            <tr>
+                <th>Amount</th>
+                <td>{{ product.amount }}</td>
+            </tr>
+            <tr>
+                <th>Sprice</th>
+                <td>{{ product.sprice }}</td>
+            </tr>
+
+
+            <tr>
+                <th>Category_id</th>
+                <td>{{ product.categoryId }}</td>
+            </tr>
+            <tr>
+                <th>User_id</th>
+                <td>{{ product.userId }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ product.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_product_index') }}">Listeye geri dön</a>
+
+    <a href="{{ path('admin_product_edit', {'id': product.id}) }}">Düzenle</a>
+{% endblock %}
